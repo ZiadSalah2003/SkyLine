@@ -1,0 +1,9 @@
+﻿@model Department
+<h1 class="btn btn-danger">Are You Sure You Want To Delete This?</h1>
+<partial name="_DepData" />
+<form class="col-4" method="post" asp-controller="Department" asp-action="DeleteCurrent">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger mt-2">Delete</button>
+
+</form>
+<a asp-controller="Department" asp-action="GetIndexView" class="btn btn-primary mt-2">Back to list</a>

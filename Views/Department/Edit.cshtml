@@ -1,0 +1,59 @@
+﻿@model Department
+<h1 class="alert alert-warning">Edit Department</h1>
+<div class="row">
+    <form class="col-4" method="post" asp-controller="Department" asp-action="EditCurrent" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ImagePath" />
+        <div>
+            <label asp-for="Name"></label>
+            <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Description"></label>
+            <input type="text" asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="AnnualBudget"></label>
+            <input type="number" asp-for="AnnualBudget" class="form-control" />
+            <span asp-validation-for="AnnualBudget" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="StartDate"></label>
+            <input asp-for="StartDate" class="form-control" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+
+        <div class="mt-2">
+            <label asp-for="IsActive"></label>
+            <input type="checkbox" asp-for="IsActive" />
+            <span asp-validation-for="IsActive" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="ImagePath"></label>
+            <input type="file" name="imageFormFile" id="imageFormFile" accept=".png,.jpg" class="form-control" onchange="AddImage()" />
+            <span asp-validation-for="ImagePath"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Edit</button>
+    </form>
+    <div class="col-4 ">
+        <img src="@Model.ImagePath" id="depImage" style="width:100%; aspect-ratio:1/1" calss="card" />
+    </div>
+</div>
+<a asp-controller="Department" asp-action="GetIndexView" class="btn btn-primary mt-2">Back to list</a>
+<partial name="_TechnicalSupportContacts" />
+
+@section Scripts{
+    <script>
+        function AddImage() {
+            document.getElementById('depImage').src = window.URL.createObjectURL(document.getElementById('imageFormFile').files[0]);
+        }
+    </script>
+}  

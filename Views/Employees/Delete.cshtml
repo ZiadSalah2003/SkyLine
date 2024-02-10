@@ -1,0 +1,10 @@
+﻿@model Employee
+<h1 class="btn btn-danger">Are You Sure You Want To Delete This?</h1>
+
+<partial name="_EmpData"/>
+<form class="col-4" method="post" asp-controller="Employees" asp-action="DeleteCurrent">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger mt-2">Delete</button>
+
+</form>
+<a asp-controller="Employees" asp-action="GetIndexView" class="btn btn-primary mt-2">Back to list</a>

@@ -1,0 +1,40 @@
+﻿@{
+    Department dep = (Department)ViewBag.CurrentDepartment;
+}
+<div class="row">
+<dl class=" col-6 row">
+    <dt class="col-2">@Html.DisplayNameFor(e=>dep.Id)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>dep.Id)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e=>dep.Name)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>dep.Name)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e=>dep.Description)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>dep.Description)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e=>dep.AnnualBudget)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>dep.AnnualBudget)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e=>dep.StartDate)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>dep.StartDate)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e=>dep.IsActive)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>dep.IsActive)</dd>
+</dl>
+    <img src="@dep.ImagePath" class="col-6 card" />
+</div>
+@if(dep.Employees.Count>0 && dep.Employees != null)
+{
+    <ul class="list-group col-4">
+        <li class="list-group-item active">Employees
+        @foreach (var item in dep.Employees)
+        {
+             <a asp-controller="Employees" asp-action="GetDetailsView" asp-route-id="@item.Id" style="text-decoration:none">
+            <li class="list-group-item list-group-item-action">@item.FullName (@item.Position</li>
+            </a>
+        }
+    </ul>
+}
+else{
+    <h1 class="alert alert-danger">There is No Employee</h1>
+}

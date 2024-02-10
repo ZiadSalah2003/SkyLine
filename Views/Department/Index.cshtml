@@ -1,0 +1,194 @@
+﻿@model IEnumerable<Department>
+<h1 class="alert-success text-center">Department Index</h1>
+<a asp-controller="Department" asp-action="GetCreateView" class="btn btn-success mb-3">Create New</a>
+<br />
+
+<div class="row mb-2">
+    <form method="get" class="col-4">
+        <input type="hidden" name="pageSize" value="@ViewBag.PageSize" />
+        <input type="hidden" name="pageNumber" value="@ViewBag.PageNumber" />
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" value="@ViewBag.CurrentSearch" />
+            <button type="submit" class="btn btn-secondary input-group-append"><i class="bi bi-search"></i></button>
+        </div>
+
+    </form>
+    <form method="get" class="col-4" asp-controller="Department" asp-action="GetIndexView" class="col-4 row">
+        <div class="input-group">
+            <input type="hidden" name="search" value="@ViewBag.CurrentSearch" />
+            <input type="number" name="pageSize" id="pageSize" title="page size" value="@ViewBag.PageSize" class="text-center col-4" />
+            <input type="number" name="pageNumber" id="pageNumber" title="page Number" value="@ViewBag.PageNumber" class="text-center col-1" />
+            <button type="submit" class="btn btn-secondary input group-append col-4"><i class="bi bi-file-earmark"></i></button>
+        </div>
+
+    </form>
+</div>
+@if (Model.Count() > 0)
+{
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(e=>e.Id)</th>
+                <th>
+                    <div style="width:50%;float:left;text-align:left">@Html.DisplayNameFor(e=>e.Name)</div>
+                    <div style="width:50%;float:right;text-align:right">
+                        <a asp-controller="Department"
+                        asp-action="GetIndexView"
+                           asp-route-sortType="Name"
+                           asp-route-sortOrder="asc"
+                           asp-route-srcset="@ViewBag.CurrentSearch"
+                           asp-route-pageSize="@ViewBag.PageSize"
+                           asp-route-pageNumber="@ViewBag.PageNumber"
+                           style="text-decoration:none">
+                            <i class="bi bi-arrow-up"></i>
+                        </a>
+                        <a asp-controller="Department" asp-action="GetIndexView"
+                           asp-route-sortType="Name" asp-route-sortOrder="desc"
+                           asp-route-srcset="@ViewBag.CurrentSearch"
+                           asp-route-pageSize="@ViewBag.PageSize"
+                           asp-route-pageNumber="@ViewBag.PageNumber"
+                           style="text-decoration:none">
+                            <i class="bi bi-arrow-down"></i>
+                        </a>
+                    </div>
+                </th>
+                <th>
+                    <div style="width:50%;float:left;text-align:left">@Html.DisplayNameFor(e=>e.Description)</div>
+                    <div>
+
+                        <a asp-controller="Department" asp-action="GetIndexView"
+                           asp-route-sortType="Description" asp-route-sortOrder="asc"
+                           asp-route-srcset="@ViewBag.CurrentSearch"
+                           asp-route-pageSize="@ViewBag.PageSize"
+                           asp-route-pageNumber="@ViewBag.PageNumber"
+                           style="text-decoration:none">
+                            <i class="bi bi-arrow-up"></i>
+                        </a>
+                        <a asp-controller="Department" asp-action="GetIndexView"
+                           asp-route-sortType="Description" asp-route-sortOrder="desc"
+                           asp-route-srcset="@ViewBag.CurrentSearch"
+                           asp-route-pageSize="@ViewBag.PageSize"
+                           asp-route-pageNumber="@ViewBag.PageNumber"
+                           style="text-decoration:none">
+                            <i class="bi bi-arrow-down"></i>
+                        </a>
+
+                    </div>
+                </th>
+                <th>@Html.DisplayNameFor(e=>e.AnnualBudget)</th>
+                <th>@Html.DisplayNameFor(e=>e.ImagePath)</th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(e=>department.Id)</td>
+                    <td>@Html.DisplayFor(e=>department.Name) </td>
+                    <td>@Html.DisplayFor(e=>department.Description)</td>
+                    <td>@Html.DisplayFor(e=>department.AnnualBudget)</td>
+                    <td>@Html.DisplayFor(e=>department.StartDate)</td>
+                    <td>
+                        <div style="width:100%;height:100%">
+                            <img src="@department.ImagePath" style="width:15rem; height:15rem; border-radius:50%" />
+                        </div>
+                    </td>
+                    
+                    <td>
+                        <a asp-controller="Department" asp-action="GetDetailsView" asp-route-id="@department.Id" class="btn btn-outline-primary"><i class="bi bi-list-ul"></i></a>
+                        <a asp-controller="Department" asp-action="GetEditView" asp-route-id="@department.Id" class="btn btn-outline-success"><i class="bi bi-pencil-square"></i></a>
+                        <a asp-controller="Department" asp-action="GetDeleteView" asp-route-id="@department.Id" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfood>
+            <tr>
+                <th colspan="3" style="text-align:rigth">Total</th>
+                <th>@Model.Sum(dep=>dep.AnnualBudget)</th>
+            </tr>
+        </tfood>
+
+    </table>
+}
+else
+{
+    <h1 class="alert-danger text-center">There is No Data</h1>
+}
+<br />
+<hr />
+@foreach (var department in Model)
+{
+    <div class="card" style="display:inline-block;width:18rem">
+
+        <img src="@department.ImagePath" class="card-img-top" style="width:100%; aspect-ratio:1/1" />
+
+        <div class="card-body">
+            <h5 class="card-title text-center" style="color:darkblue">@department.Name</h5>
+            <p class="card-text text-center fw-bold" style="color:maroon">@department.Description</p>
+        </div>
+
+        <div class="d-flex justify-content-center mb-2">
+            <a asp-controller="Department" asp-action="GetDetailsView" asp-route-id="@department.Id"
+               class="btn btn-outline-primary" title="Details">
+                <i class="bi bi-list-ul"></i>
+            </a>
+            &nbsp;
+            <a asp-controller="Department" asp-action="GetEditView" asp-route-id="@department.Id"
+               class="btn btn-outline-success" title="Edit">
+                <i class="bi bi-pencil-square"></i>
+            </a>
+            &nbsp;
+            <a asp-controller="Department" asp-action="GetDeleteView" asp-route-id="@department.Id"
+               class="btn btn-outline-danger" title="Delete">
+                <i class="bi bi-trash"></i>
+            </a>
+        </div>
+
+    </div>
+}
+<hr />
+@foreach (var department in Model)
+{
+    <div class="card mb-3 text-center" style=display:inline-block; width:200rem">
+        <div class="card-header"> @department.Name</div>
+        <div class="card-body">
+            <h5 class="card-title">@department.Description</h5>
+            <p class="card-text">@department.StartDate</p>
+        </div>
+        <div class="card-footer"><div>@department.AnnualBudget</div></div>
+    </div>
+
+}
+<br />
+<hr />
+@foreach (var department in Model)
+{
+    <div class="card mb-3 text-center bg-primary text-white" style=display:inline-block; width:150rem">
+        <div class="card-header"> @department.Name</div>
+        <div class="card-body">
+            <h5 class="card-title">@department.Description</h5>
+            <p class="card-text">@department.StartDate</p>
+        </div>
+        <div class="card-footer"><div>@department.AnnualBudget</div></div>
+    </div>
+
+}
+<br />
+<hr />
+@foreach (var department in Model)
+{
+    <div class="card mb-3 text-center bg-transparent border-success" style=display:inline-block; width:150rem">
+        <div class="card-header  bg-transparent border-success"> @department.Name</div>
+        <div class="card-body  bg-transparent border-success">
+            <h5 class="card-title">@department.Description</h5>
+            <p class="card-text">@department.StartDate</p>
+        </div>
+        <div class="card-footer  bg-transparent border-success"><div>@department.AnnualBudget</div></div>
+    </div>
+
+}
+<br />
+<hr />

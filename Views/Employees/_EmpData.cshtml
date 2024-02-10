@@ -1,0 +1,35 @@
+﻿@{
+    Employee emp = (Employee)ViewBag.CurrentEmployee;
+}
+<div class="row">
+<dl class=" col-6 row">
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.Id)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.Id)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.FullName)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.FullName)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.Position)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.Position)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.Sallary)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.Sallary)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.BirthDate)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.BirthDate)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.JoinDateTime)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.JoinDateTime)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.IsActive)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.IsActive)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.AttendenceTime)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.AttendenceTime)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.PhoneNumber)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.PhoneNumber)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.Code)</dt>
+    <dd class="col-10">@Html.DisplayFor(e=>emp.Code)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e=>emp.DepartmentId)</dt>
+    <dd class="col-10">
+        <a asp-controller="Department" asp-action="GetDetailsView" asp-route-id="@emp.DepartmentId" style="text-decoration:none">
+             (@Html.DisplayFor(e=>emp.Department.Name) (@Html.DisplayFor(e=>emp.Department.Description))
+        </a>
+    </dd>
+</dl>
+<img src="@emp.ImagePath" class="col-6 card"/>
+</div>
