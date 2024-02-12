@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ahmed Hozain\\source\\repos\\skyline\\skyline\\skyline.csproj": {}
+    "D:\\GitHub\\MVC_ITI_Project\\skyline.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ahmed Hozain\\source\\repos\\skyline\\skyline\\skyline.csproj": {
+    "D:\\GitHub\\MVC_ITI_Project\\skyline.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ahmed Hozain\\source\\repos\\skyline\\skyline\\skyline.csproj",
+        "projectUniqueName": "D:\\GitHub\\MVC_ITI_Project\\skyline.csproj",
         "projectName": "skyline",
-        "projectPath": "C:\\Users\\Ahmed Hozain\\source\\repos\\skyline\\skyline\\skyline.csproj",
-        "packagesPath": "C:\\Users\\Ahmed Hozain\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ahmed Hozain\\source\\repos\\skyline\\skyline\\obj\\",
+        "projectPath": "D:\\GitHub\\MVC_ITI_Project\\skyline.csproj",
+        "packagesPath": "C:\\Users\\Ziad\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\MVC_ITI_Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Ahmed Hozain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ziad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

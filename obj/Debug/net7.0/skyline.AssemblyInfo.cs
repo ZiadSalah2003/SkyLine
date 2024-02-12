@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("skyline")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d466984517a7da2a25f21e8d211f3b7865c95f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1103ce79abc595c62274624e3fff6ad09590348c")]
 [assembly: System.Reflection.AssemblyProductAttribute("skyline")]
 [assembly: System.Reflection.AssemblyTitleAttribute("skyline")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
